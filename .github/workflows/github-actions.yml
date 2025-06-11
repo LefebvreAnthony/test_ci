@@ -1,0 +1,37 @@
+name: Test pipeline github actions
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubunto-latest
+    steps:
+      - name: Display classic message
+        run: echo "This is a classic message"
+      - name: Display message with variable
+        run: echo "This is a message with a variable: ${{ secrets.MY_SECRET }}"
+      - name: Display message with environment variable
+        run: echo "This is a message with an environment variable: $MY_ENV_VAR"
+        env:
+          MY_ENV_VAR: ${{ secrets.MY_ENV_VAR }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display build message
+        run: echo "This is a build message"
+      - name: Display message with variable
+        run: echo "This is a message with a variable: ${{ secrets.MY_SECRET }}"
+      - name: Display message with environment variable
+        run: echo "This is a message with an environment variable: $MY_ENV_VAR"
+        env:
+          MY_ENV_VAR: ${{ secrets.MY_ENV_VAR }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display deploy message
+        run: echo "This is a deploy message"
+      - name: Display message with variable
+        run: echo "This is a message with a variable: ${{ secrets.MY_SECRET }}"
+      - name: Display message with environment variable
+        run: echo "This is a message with an environment variable: $MY_ENV_VAR"
+        env:
+          MY_ENV_VAR: ${{ secrets.MY_ENV_VAR }}
